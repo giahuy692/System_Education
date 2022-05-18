@@ -11,10 +11,25 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "prettier": "2.6.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write \"src/**/*.{js,json,scss}\"",
+    "start": "nodemon --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+    "pre-commit": "lint-staged"
+    }
   },
   "author": "",
   "license": "ISC",
