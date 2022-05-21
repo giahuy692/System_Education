@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const db = require('./config/db/index.js'); //Kết nối db
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
 
 const app = express();
 db.connect(); // Gọi hàm kết nối db
@@ -19,6 +20,7 @@ app.use(morgan('combined'));
 
 //ROUTES
 app.use('/v1/auth', authRoute);
+app.use('/v1/user', userRoute);
 
 const port = 8000;
 app.listen(port, () => {
